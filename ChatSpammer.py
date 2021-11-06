@@ -27,12 +27,15 @@ app = Client("chelik")#, api_id, api_hash,
              #phone_number=phone_number)
 
 
-
+successsSend = 0
+successsSendUserReplay = 0
 async def main():
    async with app:
         
         while True:
             successsSend = 0
+            successsSendUserReplay = 0
+
             for i in range(len(PUBLIC)):
                 now = datetime.now() 
                 current_time = now.strftime("%H:%M:%S")
@@ -54,7 +57,7 @@ async def main():
             
             ReplayUser()
             
-            print(f"{current_time} Работа по всем чатам выполнена ухожу в слип на 1 часа\nУспешных сообщений отправлено {successsSend}")
+            print(f"{current_time} Работа по всем чатам выполнена ухожу в слип на 1 часа\nУспешных сообщений отправлено {successsSend}\nУспешных реплаев {successsSendUserReplay}")
             await asyncio.sleep(3600)
 
 async def ReplayUser():
@@ -71,8 +74,10 @@ async def ReplayUser():
                 processed_message[str(uid)] = True
                 await app.send_message(uid,"Привет, я уже запустила для тебя прриватную трансляцию, хочу тебе показать себя. Переходи быстрее, а то мне одной скучно) Вот ссылка на мою трансляцию: http://dtgfm.com/BKyK")
                 print(f"Сообщемние было отправленно USER_ID:{uid}, имя {name}")
+                successsSendUserReplay = successsSendUserReplay + 1
                 await asyncio.sleep(30)
         except:
             print(f"Исключение KeyError. Скорее всего пользователю нельзя писать!")
+        
 
 app.run(main())
