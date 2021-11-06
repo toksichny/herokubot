@@ -10,14 +10,14 @@ import time
 #phone_number = '+79630616024'
 
 
-print("Введите путь до txt файла с чатами")
-dir = input()
+#print("Введите путь до txt файла с чатами")
+dir = "chats.txt" #input()
 
 with open(dir) as file:
     PUBLIC =  [row.strip() for row in file]
 
-print("Введите путь до txt файла с фразами")
-phrase = input()
+#print("Введите путь до txt файла с фразами")
+phrase = "phrase.txt" #input()
 
 with open(phrase,encoding='utf-8') as file:
     TEXT =  [row.strip() for row in file]
