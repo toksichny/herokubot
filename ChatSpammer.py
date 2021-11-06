@@ -55,7 +55,7 @@ async def main():
                 else:
                     print(f"{current_time} Успех! Ошибок не возникло!")
             
-            processed_message = await shelve.open('processed_userID.db', writeback=True)
+            processed_message = shelve.open('processed_userID.db', writeback=True)
             chat_id = await app.get_dialogs()
             for i in range(len(chat_id)):
                 try:  
