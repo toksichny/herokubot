@@ -1,4 +1,5 @@
 from pyrogram import Client
+from pyrogram.raw import functions
 from datetime import datetime 
 import asyncio
 import shelve
@@ -66,9 +67,10 @@ async def main():
                             print(f'Пропускаем уже обработанного пользователя ={uid}')
                             continue
                         processed_message[str(uid)] = True
-                        await app.send_message(uid,"Привет, я уже запустила для тебя прриватную трансляцию, хочу тебе показать себя. Переходи быстрее, а то мне одной скучно) Вот ссылка на мою трансляцию: http://dtgfm.com/BKyK")
+                        await app.send_message(uid,"Привет, я уже запустила для тебя приватную трансляцию, хочу тебе показать себя. Переходи быстрее, а то мне одной скучно) Вот ссылка на мою трансляцию: http://dtgfm.com/CnpU")
                         print(f"Сообщемние было отправленно USER_ID:{uid}, имя {name}")
                         successsSendUserReplay = successsSendUserReplay + 1
+                        await app.send(functions.messages.DeleteHistory(peer=await app.resolve_peer(uid), max_id=0, revoke=False))
                     await asyncio.sleep(30)
                 except:
                     print(f"Исключение KeyError. Скорее всего пользователю нельзя писать!")

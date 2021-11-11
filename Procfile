@@ -1,1 +1,1 @@
-worker: python ChatSpammer.py
+worker: python ChatSpammerAndReplyaer.py
