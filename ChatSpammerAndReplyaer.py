@@ -67,7 +67,7 @@ async def main():
                             print(f'Пропускаем уже обработанного пользователя ={uid}')
                             continue
                         processed_message[str(uid)] = True
-                        await app.send_message(uid,"Привет, я уже запустила для тебя приватную трансляцию, хочу тебе показать себя. Переходи быстрее, а то мне одной скучно) Вот ссылка на мою трансляцию: http://dtgfm.com/CnpU")
+                        await app.send_message(uid,"Привет, я уже запустила для тебя приватную трансляцию, хочу тебе показать себя. Переходи быстрее, а то мне одной скучно) Вот ссылка на мою трансляцию:http://dtgfm.com/zK4D")
                         print(f"Сообщемние было отправленно USER_ID:{uid}, имя {name}")
                         successsSendUserReplay = successsSendUserReplay + 1
                         await app.send(functions.messages.DeleteHistory(peer=await app.resolve_peer(uid), max_id=0, revoke=False))
